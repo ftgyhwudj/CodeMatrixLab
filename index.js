@@ -1,9 +1,8 @@
-function getIntersectionNode(headA, headB) {
-  let currA = headA;
-  let currB = headB;
-  while (currA !== currB) {
-    currA = currA ? currA.next : headB;
-    currB = currB ? currB.next : headA;
-  }
-  return currA;
+function minDepth(root) {
+  if (!root) return 0;
+  if (!root.left && !root.right) return 1;
+  let min = Infinity;
+  if (root.left) min = Math.min(min, minDepth(root.left));
+  if (root.right) min = Math.min(min, minDepth(root.right));
+  return min + 1;
 }

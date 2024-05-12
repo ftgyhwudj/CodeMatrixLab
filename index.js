@@ -1,8 +1,13 @@
-function minDepth(root) {
-  if (!root) return 0;
-  if (!root.left && !root.right) return 1;
-  let min = Infinity;
-  if (root.left) min = Math.min(min, minDepth(root.left));
-  if (root.right) min = Math.min(min, minDepth(root.right));
-  return min + 1;
+function canPartition(nums) {
+  const sum = nums.reduce((acc, val) => acc + val, 0);
+  if (sum % 2 !== 0) return false;
+  const target = sum / 2;
+  const dp = new Array(target + 1).fill(false);
+  dp[0] = true;
+  for (const num of nums) {
+    for (let i = target; i >= num; i--) {
+      dp[i] = dp[i] || dp[i - num];
+    }
+  }
+  return dp[target];
 }

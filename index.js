@@ -1,4 +1,3 @@
-const difference = (a, b) => {
-  const s = new Set(b);
-  return a.filter((x) => !s.has(x));
-};
+function averageArray(arr) {
+  return arr.reduce((acc, curr) => acc + curr, 0) / arr.length;
+}
